@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        form {
+            background-color: rgba(0,0,0,0.5);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        input, select {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 10px;
+            width: 100%;
+            background-color: #00c896;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .link {
+            color: white;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Sign Up</h2>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form method="post">
+        <input type="text" name="name" placeholder="Full Name" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <input type="text" name="phone" placeholder="Phone Number" required><br>
+        <select name="role" required>
+            <option value="">Select Role</option>
+            <option value="admin">Administrator</option>
+            <option value="user">User</option>
+        </select><br>
+        <button type="submit">Sign Up</button>
+    </form>
+    <div class="link">
+        Already have an account? <a href="{{ url_for('login') }}">Log in</a>
+    </div>
+</body>
+</html>

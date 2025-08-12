@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-image: url("{{ url_for('static', filename='admin_index.jpg') }}");
+            background-size: cover; /* Makes the image fill the screen proportionally */
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            color: #fff;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-bottom: 40px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome Admin!</h1>
+    <div class="button-group">
+        <a href="{{ url_for('add_flight') }}">Add New Flight</a>
+        <a href="{{ url_for('all_flights') }}">View All Flights</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+</html>

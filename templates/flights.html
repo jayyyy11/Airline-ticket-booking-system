@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Flights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0077cc;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f0f8ff;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            color: #0077cc;
+            font-weight: bold;
+        }
+
+        .book-btn {
+            background-color: #0077cc;
+            color: white;
+            padding: 6px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .book-btn:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Search for Flights</h2>
+    <form method="POST">
+        <input type="text" name="source" placeholder="Source Airport (e.g., DEL)" required>
+        <input type="text" name="destination" placeholder="Destination Airport (e.g., BOM)" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if flights %}
+    <table>
+        <tr>
+            <th>Flight No.</th>
+            <th>Airline</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+            <th>Price</th>
+            <th>Available Seats</th>
+            {% if session['role'] == 'user' %}
+            <th>Book</th>
+            {% endif %}
+        </tr>
+        {% for flight in flights %}
+        <tr>
+            <td>{{ flight[2] }}</td>  <!-- flight_number -->
+            <td>{{ flight[1] }}</td>  <!-- airline -->
+            <td>{{ flight[3] }}</td>  <!-- departure_airport -->
+            <td>{{ flight[4] }}</td>  <!-- arrival_airport -->
+            <td>{{ flight[5] }}</td>  <!-- departure_time -->
+            <td>{{ flight[6] }}</td>  <!-- arrival_time -->
+            <td>₹{{ flight[9] }}</td> <!-- price -->
+            <td>{{ flight[8] }}</td>  <!-- available_seats -->
+            {% if session['role'] == 'user' %}
+            <td><a href="{{ url_for('book_flight', flight_id=flight[0]) }}" class="book-btn">Book</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p style="text-align:center;">No flights available.</p>
+    {% endif %}
+
+    <div class="back-link">
+        <a href="{{ url_for('user_dashboard') }}">← Back to Dashboard</a>
+    </div>
+</body>
+</html>

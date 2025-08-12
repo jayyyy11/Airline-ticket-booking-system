@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Airline Reservation System</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('{{ url_for('static', filename='background.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Removed the top-right button styles but keeping code for future use */
+        .top-right {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+
+        .top-right a {
+            margin-left: 15px;
+            padding: 10px 20px;
+            background-color: #0055aa;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .top-right a:hover {
+            background-color: #003366;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 20px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 15px;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #004080;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+
+        <!-- Top-right buttons removed as requested -->
+        <!--
+        <div class="top-right">
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+        </div>
+        -->
+
+        <header>
+            <h1>Welcome to SkyFly</h1>
+            <p>Your trusted Airline Reservation System</p>
+        </header>
+
+        <div class="container">
+            <a href="/login" class="btn">Login</a>
+            <a href="/signup" class="btn">Sign Up</a>
+        </div>
+
+    </div>
+</body>
+</html>

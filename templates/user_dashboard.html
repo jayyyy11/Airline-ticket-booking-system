@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('{{ url_for('static', filename='dashboard_flight.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .logout {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+
+        .logout a {
+            background-color: #cc0000;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .logout a:hover {
+            background-color: #990000;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 10px #000;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            margin: 15px 20px;
+            padding: 15px 30px;
+            background-color: #0077cc;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-links a:hover {
+            background-color: #005fa3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="logout">
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+        <h1>Welcome, {{ username }}!</h1>
+        <div class="nav-links">
+            <a href="{{ url_for('flights') }}">Search Flights</a>
+            <a href="{{ url_for('all_flights') }}">View All Flights</a>
+        </div>
+    </div>
+</body>
+</html>
